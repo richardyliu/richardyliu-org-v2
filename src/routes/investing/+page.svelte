@@ -21,8 +21,7 @@
       I invest in robotics, deep tech, infrastructure, and applications at
       <a href="https://www.llamaventures.vc/" target="_blank" rel="noreferrer noopener"
         >Llama Ventures</a
-      >. What I look for is a team close enough to the metal that they can tell me which
-      part of their own system they do not yet trust.
+      >.
     </p>
   </RichTextModule>
 

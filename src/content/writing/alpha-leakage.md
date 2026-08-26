@@ -107,19 +107,19 @@ returns trend in the past five decades shows that by the time I’m primed for m
 investment, even the top decile investors will be lucky to put up high teens IRR. So I set out to
 ask industry veterans about my concern.
 
-After speaking with legendary firm builders like Marc Andreessen, Josh Kushner, and Josh Wolfe,
-I was convinced that everyone recognized the problem. I was also left with the impression that
-nobody had a satisfactory solution yet — the best remediation I heard was that venture capital
-has become so large and diverse that it’s unfair to treat it as one asset class. Instead, one should
-categorize the top-tier franchise firms as a separate group, let’s call it “premium venture”, from
-the long tail of small and medium-cap “regular venture” funds. The argument is that venture
-capital is a “feast or famine” business that will lead to a “megas and minnows” industry structure,
-where post-inflection firms see the best deal flow, can raise infinite capital, and demand
-consistent brand premiums when competing for rounds. Small boutique emerging funds, like my
-own, will be fine as we live off of crumbs of local alpha. Mid-market firms that are three or four
-funds in with a few hundred million AUM are stuck between a rock and a hard place — they’re too
-big to survive on small pockets of alpha but too small to compete with premium venture
-franchises.
+After speaking with and working alongside long-time builders and serial entrepreneurs behind
+Kingsoft, Yongche, Wandoujia, and PingCAP, I was convinced that everyone recognized the problem.
+I was also left with the impression that nobody had a satisfactory solution yet — the best
+remediation I heard was that venture capital has become so large and diverse that it’s unfair to
+treat it as one asset class. Instead, one should categorize the top-tier franchise firms as a
+separate group, let’s call it “premium venture”, from the long tail of small and medium-cap
+“regular venture” funds. The argument is that venture capital is a “feast or famine” business that
+will lead to a “megas and minnows” industry structure, where post-inflection firms see the best
+deal flow, can raise infinite capital, and demand consistent brand premiums when competing for
+rounds. Small boutique emerging funds, like my own, will be fine as we live off of crumbs of local
+alpha. Mid-market firms that are three or four funds in with a few hundred million AUM are stuck
+between a rock and a hard place — they’re too big to survive on small pockets of alpha but too
+small to compete with premium venture franchises.
 
 This finding did not alleviate my concern. In fact, it had the effect of lighting a fire under my ass
 and was one of the reasons I chose to raise my first fund right out of school. Even though I agree

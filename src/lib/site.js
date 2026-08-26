@@ -27,20 +27,20 @@ export const SOCIAL = {
   linkedin: 'https://www.linkedin.com/in/richard-yliu/'
 };
 
+/** @typedef {{ label: string, href: string, sub?: { label: string, href: string }[] }} NavItem */
+
 /**
  * Menu overlay structure. `sub` entries render indented beneath their section,
  * exactly as the reference does — the indent is typographic (text-indent), not
- * a nested list, so the whole panel stays one flat grid of rows.
+ * a nested list, so the whole panel stays one flat grid of rows. No section
+ * declares one at the moment; OverlayPanel still renders them if one returns.
  */
+/** @type {NavItem[]} */
 export const NAV = [
   { label: 'About', href: '/' },
   { label: 'Building', href: '/building' },
   { label: 'Writing', href: '/writing' },
-  {
-    label: 'Reading',
-    href: '/reading',
-    sub: [{ label: 'With Notes', href: '/reading#with-notes' }]
-  },
+  { label: 'Reading', href: '/reading' },
   { label: 'Investing', href: '/investing' }
 ];
 

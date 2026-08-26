@@ -33,12 +33,6 @@
       robot for warehouse inventory, and the wiki, handbook and match-display app the
       robotics work needed.
     </p>
-    <p>
-      Titles and descriptions are my own, carried over from
-      <a href="https://personal-gamma-two.vercel.app/" target="_blank" rel="noreferrer noopener"
-        >my projects page</a
-      >.
-    </p>
   </RichTextModule>
 
   <section class="layout-grid" id="builds">

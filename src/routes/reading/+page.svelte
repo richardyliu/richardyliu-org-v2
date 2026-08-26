@@ -12,11 +12,9 @@
   const slugOf = (/** @type {string} */ s) => s.split('/').filter(Boolean).pop() ?? s;
 
   let recent = $derived(data.shelf.slice(0, 8));
-  let withNotes = $derived(data.shelf.filter((b) => b.hasNotes));
 
   const SECTIONS = [
     { id: 'recent', label: 'Recent' },
-    { id: 'with-notes', label: 'With Notes' },
     { id: 'all-reading', label: 'All Reading' }
   ];
 </script>
@@ -37,26 +35,6 @@
             ratio="2 / 3"
             fit="contain"
             delay={i * 40}
-          />
-        </li>
-      {/each}
-    </ul>
-  </section>
-
-  <section class="layout-grid" id="with-notes">
-    <h2 class="section-heading type-serif-body">With Notes</h2>
-    <ul class="shelf-grid">
-      {#each withNotes as book (book.slug)}
-        <li>
-          <Card
-            href={book.slug}
-            title={book.title}
-            sub={book.author}
-            meta={monoDate(book.date)}
-            src={book.coverImage}
-            alt={book.title}
-            ratio="2 / 3"
-            fit="contain"
           />
         </li>
       {/each}
