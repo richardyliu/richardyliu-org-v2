@@ -69,7 +69,7 @@
                   {/if}
                 </span>
                 {#if build.caption}
-                  <span class="build__text type-serif-body">{build.caption}</span>
+                  <span class="build__text type-serif-small">{build.caption}</span>
                 {/if}
               </span>
             </figcaption>
@@ -92,6 +92,9 @@
     font-feature-settings: 'tnum', 'lnum';
   }
 
+  /* Stops at the same column as the reading shelf so the detached [M] pill,
+     which is fixed to the content container's right edge, never sits over a
+     build image on scroll. */
   .builds {
     grid-column: 1 / -1;
     list-style: none;
@@ -171,12 +174,14 @@
 
   @media (min-width: 600px) {
     .builds {
+      grid-column: 1 / span 6;
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
 
   @media (min-width: 1024px) {
     .builds {
+      grid-column: 1 / span 8;
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
   }

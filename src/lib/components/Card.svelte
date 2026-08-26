@@ -19,6 +19,7 @@
    *   ratio?: string,
    *   fit?: 'cover' | 'contain',
    *   external?: boolean,
+   *   compact?: boolean,
    *   delay?: number
    * }}
    */
@@ -32,6 +33,7 @@
     ratio = '1 / 1',
     fit = 'cover',
     external = false,
+    compact = false,
     delay = 0
   } = $props();
 </script>
@@ -55,7 +57,7 @@
   {/if}
   <p class="card__title type-serif-body">{title}</p>
   {#if sub}
-    <p class="card__sub type-serif-body">{sub}</p>
+    <p class="card__sub {compact ? 'type-serif-small' : 'type-serif-body'}">{sub}</p>
   {/if}
 </a>
 

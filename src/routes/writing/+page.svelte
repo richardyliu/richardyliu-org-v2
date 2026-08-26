@@ -13,9 +13,10 @@
 
   /**
    * Which essays are featured is decided in +page.js — the newest plus anything
-   * inside the recency window. This file only lays them out: feature cards at
-   * roughly five columns, two to a row, and everything else in the two-up grid
-   * below.
+   * inside the recency window. This file only lays them out: feature cards two
+   * to a row, and everything else in the grid below. Both stop at the same
+   * column as the reading shelf, so the detached [M] pill never sits over a
+   * cover on scroll.
    *
    * Featured essays appear in "All Writing" as well, and that repetition is
    * intentional — the sections are the site's structure, not a function of how
@@ -44,6 +45,7 @@
               src={essay.cover}
               alt={essay.coverAlt}
               ratio="16 / 10"
+              compact
               delay={i * 60}
             />
           </li>
@@ -106,7 +108,7 @@
 
   @media (min-width: 600px) {
     .feature-grid {
-      grid-column: 1 / span 5;
+      grid-column: 1 / span 6;
     }
 
     .grid-two {
@@ -117,7 +119,7 @@
 
   @media (min-width: 1024px) {
     .feature-grid {
-      grid-column: 1 / span 11;
+      grid-column: 1 / span 8;
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 

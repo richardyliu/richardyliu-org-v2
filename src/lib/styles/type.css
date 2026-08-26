@@ -85,6 +85,15 @@ samp,
   font-weight: 400;
 }
 
+/* One step below body, for card captions and descriptions where the title
+   should stay at reading size but the supporting line should not compete. */
+.type-serif-small {
+  font-family: var(--font-family-serif);
+  font-size: var(--type-small-size);
+  line-height: var(--type-small-line-height);
+  font-weight: 400;
+}
+
 .type-serif-navigation {
   font-family: var(--font-family-serif);
   font-size: var(--type-serif-navigation-size);
