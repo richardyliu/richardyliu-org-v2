@@ -1,0 +1,437 @@
+/*
+ * Design tokens, resolved in three hops:
+ *
+ *   raw per-breakpoint token  ->  semantic token  ->  type/layout utility
+ *   (--font-size-body-default-desktop)  (--font-size-body)  (.type-serif-body)
+ *
+ * The indirection looks redundant at a glance but it is the reason a single
+ * `@media` block per breakpoint can re-point every size at once, instead of
+ * every component carrying its own media queries. Keep the shape.
+ */
+
+/* ---------------------------------------------------------------- breakpoints */
+:root {
+  --bp-mobile-min: 320px;
+  --bp-tablet: 600px;
+  --bp-desktop: 1024px;
+  --bp-desktop-large: 1360px;
+}
+
+/* --------------------------------------------------------------------- colour */
+/* Deliberately flat: pure black on pure white, one blue for links, one green
+   for the live/standby accent, and a grey ramp for surfaces and hairlines. */
+:root {
+  --color-primary-black: #000000;
+  --color-primary-black-75: rgba(0, 0, 0, 0.749);
+  --color-primary-blue: #0a82e1;
+  --color-primary-error: #e04545;
+  --color-primary-green: #00ff00;
+  --color-primary-white: #ffffff;
+  --color-primary-white-75: rgba(255, 255, 255, 0.749);
+  --color-grey-100: #f6f6f6;
+  --color-grey-100-90: rgba(246, 246, 246, 0.898);
+  --color-grey-200: #eeeeee;
+  --color-grey-200-60: rgba(224, 224, 224, 0.6);
+  --color-grey-200-80: rgba(224, 224, 224, 0.8);
+  --color-grey-300: #dddddd;
+  --color-grey-400: #cccccc;
+  --color-grey-400-30: rgba(204, 204, 204, 0.302);
+  --color-grey-500: #999999;
+  --color-grey-600: #666666;
+  --color-grey-700: #333333;
+  --color-grey-700-60: rgba(51, 51, 51, 0.6);
+  --color-grey-700-80: rgba(51, 51, 51, 0.8);
+  --color-grey-800: #161616;
+  --color-grey-800-90: rgba(22, 22, 22, 0.898);
+}
+
+/* ------------------------------------------------------------ raw font sizes */
+:root {
+  --font-size-x-small-mobile: 12px;
+  --font-size-button-mobile: 14px;
+  --font-size-small-mobile: 12px;
+  --font-size-body-default-mobile: 15px;
+  --font-size-navigation-mobile: 15px;
+  --font-size-body-large-mobile: 16px;
+  --font-size-body-headline-small-mobile: 19px;
+  --font-size-body-headline-large-mobile: 22px;
+  --font-size-title-large-mobile: 22px;
+  --font-size-title-x-large-mobile: 28px;
+  --font-size-title-xx-large-mobile: 28px;
+
+  --font-size-x-small-tablet: 10px;
+  --font-size-button-tablet: 14px;
+  --font-size-small-tablet: 12px;
+  --font-size-body-default-tablet: 16px;
+  --font-size-navigation-tablet: 16px;
+  --font-size-body-large-tablet: 16px;
+  --font-size-body-headline-small-tablet: 21px;
+  --font-size-body-headline-large-tablet: 23px;
+  --font-size-title-large-tablet: 24px;
+  --font-size-title-x-large-tablet: 34px;
+  --font-size-title-xx-large-tablet: 44px;
+
+  --font-size-x-small-desktop: 10px;
+  --font-size-button-desktop: 12px;
+  --font-size-small-desktop: 12px;
+  --font-size-body-default-desktop: 16px;
+  --font-size-navigation-desktop: 16px;
+  --font-size-body-large-desktop: 18px;
+  --font-size-body-headline-small-desktop: 21px;
+  --font-size-body-headline-large-desktop: 25px;
+  --font-size-title-large-desktop: 28px;
+  --font-size-title-x-large-desktop: 38px;
+  --font-size-title-xx-large-desktop: 56px;
+}
+
+/* -------------------------------------------------------------- raw geometry */
+:root {
+  --style-stroke-medium: 1px;
+  --style-corner-small: 4px;
+  --style-corner-medium-mobile: 14px;
+  --style-corner-medium-desktop: 12px;
+  --style-bg-blur-min: 6px;
+  --style-bg-blur-max: 24px;
+}
+
+/* ---------------------------------------------------------- raw spacing ramp */
+:root {
+  --spacing-1-mobile: 4px;
+  --spacing-2-mobile: 6px;
+  --spacing-3-mobile: 16px;
+  --spacing-5-mobile: 32px;
+  --spacing-6-mobile: 48px;
+  --spacing-7-mobile: 64px;
+  --spacing-8-mobile: 72px;
+  --spacing-9-mobile: 108px;
+  --spacing-10-mobile: 108px;
+  --spacing-11-mobile: 100px;
+  --spacing-line-break-body-mobile: 19px;
+  --spacing-line-break-mono-mobile: 16px;
+  --spacing-button-height-mobile: 34px;
+  --spacing-button-min-width-mobile: 34px;
+
+  --spacing-1-tablet: 6px;
+  --spacing-2-tablet: 12px;
+  --spacing-3-tablet: 16px;
+  --spacing-5-tablet: 32px;
+  --spacing-6-tablet: 48px;
+  --spacing-7-tablet: 56px;
+  --spacing-8-tablet: 96px;
+  --spacing-9-tablet: 140px;
+  --spacing-10-tablet: 140px;
+  --spacing-11-tablet: 140px;
+  --spacing-line-break-body-tablet: 20px;
+
+  --spacing-1-desktop: 8px;
+  --spacing-2-desktop: 16px;
+  --spacing-3-desktop: 24px;
+  --spacing-5-desktop: 48px;
+  --spacing-6-desktop: 64px;
+  --spacing-7-desktop: 72px;
+  --spacing-8-desktop: 108px;
+  --spacing-9-desktop: 172px;
+  --spacing-10-desktop: 216px;
+  --spacing-11-desktop: 320px;
+  --spacing-line-break-body-desktop: 20px;
+  --spacing-button-height-desktop: 30px;
+  --spacing-button-min-width-desktop: 40px;
+
+  --spacing-button-padding-gap: 6px;
+  --spacing-button-padding-small: 8px;
+  --spacing-button-padding-large: 12px;
+
+  --spacing-large-gutter-plus-column-mobile: 62px;
+  --spacing-large-gutter-plus-column-tablet: 102px;
+  --spacing-large-gutter-plus-column-desktop: 117px;
+}
+
+/* --------------------------------------------------------------- raw layout */
+:root {
+  --layout-columns-mobile: 6;
+  --layout-gutter-mobile: 16px;
+  --layout-margin-mobile: 16px;
+
+  --layout-columns-tablet: 8;
+  --layout-gutter-tablet: 24px;
+  --layout-margin-tablet: 24px;
+
+  --layout-columns-desktop: 12;
+  --layout-gutter-desktop: 24px;
+  --layout-margin-desktop: 24px;
+
+  --layout-gutter-desktop-large: 36px;
+  --layout-margin-desktop-large: 36px;
+
+  --layout-max-width: 1752px;
+}
+
+/* =========================================================== semantic layer */
+/* Mobile-first: this block is the base, and each `@media` below re-points the
+   same names at the next breakpoint's raw tokens. */
+:root {
+  color-scheme: light;
+
+  --color-text-default: var(--color-primary-black);
+  --color-text-muted: var(--color-grey-600);
+  --color-border-default: var(--color-grey-400);
+  --color-surface-default: var(--color-primary-white);
+  --color-surface-subtle: var(--color-grey-100);
+  --color-surface-overlay: var(--color-grey-200-60);
+  --color-link-default: var(--color-primary-blue);
+  --color-focus-outline: #cccccc;
+  --color-text-error: var(--color-primary-error);
+  --color-divider: rgba(0, 0, 0, 0.08);
+  --color-state-hover: rgba(0, 0, 0, 0.04);
+  --color-scrollbar-thumb: rgba(0, 0, 0, 0.25);
+  --color-scrollbar-thumb-hover: rgba(0, 0, 0, 0.4);
+  --color-media-placeholder: var(--color-grey-100);
+
+  --font-size-x-small: var(--font-size-x-small-mobile);
+  --font-size-small: var(--font-size-small-mobile);
+  --font-size-body: var(--font-size-body-default-mobile);
+  --font-size-heading: var(--font-size-title-large-mobile);
+  --font-size-display: var(--font-size-title-x-large-mobile);
+  --font-size-button: var(--font-size-button-mobile);
+  --font-size-navigation: var(--font-size-navigation-mobile);
+  --font-size-article-body: var(--font-size-body-large-mobile);
+  --font-size-article-sub-headline: var(--font-size-body-headline-small-mobile);
+  --font-size-article-headline: var(--font-size-body-headline-large-mobile);
+  --font-size-article-title: var(--font-size-title-x-large-mobile);
+
+  /* Only two leading values in the whole system. Tight for anything set in the
+     serif at display size, body for everything else. */
+  --line-height-body: 1.25;
+  --line-height-tight: 1.1;
+
+  /* The CJK fallbacks matter because the site identity itself contains Han
+     characters (劉永樂). */
+  --font-family-serif: 'Newsreader', Georgia, 'Times New Roman', 'Songti SC',
+    'Source Han Serif SC', 'Noto Serif CJK SC', serif;
+  --font-family-semi-mono: 'Geist Mono', 'SFMono-Regular', Menlo, Monaco, Consolas,
+    monospace;
+  --font-family-mono: var(--font-family-semi-mono);
+
+  --type-body-size: var(--font-size-body);
+  --type-body-line-height: var(--line-height-body);
+  --type-small-size: var(--font-size-small);
+  --type-small-line-height: var(--line-height-body);
+  --type-code-size: var(--font-size-small);
+  --type-code-line-height: var(--line-height-body);
+  --type-heading-size: var(--font-size-heading);
+  --type-heading-line-height: var(--line-height-tight);
+  --type-heading-default-size: var(--font-size-body);
+  --type-heading-default-line-height: var(--line-height-tight);
+  --type-heading-x-large-size: var(--font-size-display);
+  --type-heading-x-large-line-height: var(--line-height-tight);
+  --type-serif-navigation-size: var(--font-size-navigation);
+  --type-serif-navigation-line-height: 1.25;
+  --type-serif-indent-medium: min(var(--grid-margin), 24px);
+  --type-serif-indent-large: var(--grid-indent-wide);
+  --type-semi-mono-default-size: var(--font-size-small);
+  --type-semi-mono-default-line-height: var(--line-height-body);
+  --type-semi-mono-default-letter-spacing: 0.02em;
+  --type-semi-mono-small-size: var(--font-size-x-small);
+  --type-semi-mono-small-line-height: 1.35;
+  --type-semi-mono-small-letter-spacing: 0;
+  --type-semi-mono-x-small-size: var(--font-size-x-small);
+  --type-semi-mono-x-small-line-height: var(--line-height-body);
+  --type-semi-mono-x-small-letter-spacing: 0.02em;
+  --type-mono-default-size: var(--font-size-small);
+  --type-mono-default-line-height: var(--line-height-body);
+  --type-mono-default-letter-spacing: 0.02em;
+  --type-mono-navigation-size: var(--font-size-small);
+  --type-mono-navigation-line-height: var(--line-height-body);
+  --type-mono-navigation-letter-spacing: 0.02em;
+  --type-mono-details-size: var(--font-size-small);
+  --type-mono-details-line-height: var(--line-height-body);
+  --type-mono-details-letter-spacing: 0.02em;
+  --type-mono-button-size: var(--font-size-button);
+  --type-mono-button-line-height: var(--line-height-body);
+  --type-mono-button-letter-spacing: 0.02em;
+
+  --grid-columns: var(--layout-columns-mobile);
+  --grid-gutter: var(--layout-gutter-mobile);
+  --grid-margin: var(--layout-margin-mobile);
+  --grid-indent-wide: var(--spacing-large-gutter-plus-column-mobile);
+  --grid-max-width: var(--layout-max-width);
+  --grid-template-columns: repeat(var(--grid-columns), minmax(0, 1fr));
+
+  --radius-small: var(--style-corner-small);
+  --radius-medium: var(--style-corner-medium-mobile);
+  --stroke-medium: var(--style-stroke-medium);
+  --blur-min: var(--style-bg-blur-min);
+  --blur-max: var(--style-bg-blur-max);
+
+  --space-none: 0px;
+  --space-line-break: var(--spacing-line-break-body-mobile);
+  --space-line-break-mono: var(--spacing-line-break-mono-mobile);
+  --space-1: var(--spacing-1-mobile);
+  --space-2: var(--spacing-2-mobile);
+  --space-3: var(--spacing-3-mobile);
+  --space-4: var(--grid-gutter);
+  --space-5: var(--spacing-5-mobile);
+  --space-6: var(--spacing-6-mobile);
+  --space-7: var(--spacing-7-mobile);
+  --space-8: var(--spacing-8-mobile);
+  --space-9: var(--spacing-9-mobile);
+  --space-10: var(--spacing-10-mobile);
+  --space-11: var(--spacing-11-mobile);
+
+  --ease-standard: ease;
+  --ease-out: ease-out;
+  --ease-emphasized: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --z-index-base: 1;
+  --z-index-header: 40;
+  --z-index-sticky: 50;
+  --z-index-overlay: 60;
+  --z-index-modal: 100;
+
+  --btn-height: var(--spacing-button-height-mobile);
+  --btn-min-width: var(--spacing-button-min-width-mobile);
+  --btn-padding-sm: var(--spacing-button-padding-small);
+  --btn-padding-lg: var(--spacing-button-padding-large);
+  --btn-gap: var(--spacing-button-padding-gap);
+  --btn-surface-medium: var(--color-grey-200-60);
+  --btn-surface-medium-hover: var(--color-grey-200-80);
+  --btn-surface-medium-active: var(--color-grey-300);
+  --btn-surface-high: var(--color-grey-800);
+  --btn-surface-high-hover: var(--color-grey-800-90);
+  --btn-text-high: var(--color-primary-white);
+  --btn-text-high-active: var(--color-primary-white-75);
+  --btn-stroke-low: var(--color-grey-400);
+  --btn-stroke-low-hover: var(--color-grey-600);
+
+  /*
+   * The header brand line — wordmark, separator, breadcrumb — is all live text
+   * in the serif, so every part must share one size or their line boxes differ
+   * and the crumb rides above the name. Declared once here rather than in each
+   * component so the two cannot drift apart.
+   *
+   * Two steps, not three: the reference jumps its brand straight from the small
+   * size to the large one at 600px and never uses the tablet value.
+   */
+  --brand-font-size: var(--font-size-title-large-mobile);
+
+  --header-height: 68px;
+  /* Pulls a sticky rail's first line onto the header's optical centre line. */
+  --sticky-top-offset: calc(var(--header-height) * 0.5 - 0.625em);
+  --nav-marker-width: calc(var(--font-size-small) * 2.5);
+  /* Reserves room under the landing caption for the bullet row beneath it. */
+  --landing-caption-bottom: calc(
+    var(--grid-margin) + var(--type-mono-default-size) *
+      var(--type-mono-default-line-height) + var(--space-4)
+  );
+}
+
+/*
+ * Dark tokens exist but nothing toggles them: like the reference, dark is opt-in
+ * per-subtree via data-theme, not a site-wide preference. Wiring it to
+ * prefers-color-scheme would flip a design that was drawn for paper white.
+ */
+:root[data-theme='dark'],
+[data-theme='dark'] {
+  color-scheme: dark;
+  --color-text-default: var(--color-primary-white);
+  --color-text-muted: var(--color-grey-500);
+  --color-border-default: var(--color-grey-600);
+  --color-surface-default: var(--color-grey-800);
+  --color-surface-subtle: var(--color-grey-700);
+  --color-surface-overlay: var(--color-grey-700-60);
+  --color-focus-outline: var(--color-grey-600);
+  --color-divider: rgba(255, 255, 255, 0.12);
+  --color-state-hover: rgba(255, 255, 255, 0.06);
+  --color-scrollbar-thumb: rgba(255, 255, 255, 0.3);
+  --color-scrollbar-thumb-hover: rgba(255, 255, 255, 0.45);
+  --color-media-placeholder: var(--color-grey-700);
+  --btn-surface-medium: var(--color-grey-700-60);
+  --btn-surface-medium-hover: var(--color-grey-700-80);
+  --btn-surface-medium-active: var(--color-grey-700);
+  --btn-surface-high: var(--color-primary-white);
+  --btn-surface-high-hover: var(--color-grey-100-90);
+  --btn-text-high: var(--color-primary-black);
+  --btn-text-high-active: var(--color-primary-black-75);
+  --btn-stroke-low: var(--color-grey-600);
+  --btn-stroke-low-hover: var(--color-grey-500);
+}
+
+@media (min-width: 600px) {
+  :root {
+    --font-size-x-small: var(--font-size-x-small-tablet);
+    --font-size-small: var(--font-size-small-tablet);
+    --font-size-body: var(--font-size-body-default-tablet);
+    --font-size-heading: var(--font-size-title-large-tablet);
+    --font-size-display: var(--font-size-title-x-large-tablet);
+    --font-size-button: var(--font-size-button-tablet);
+    --font-size-navigation: var(--font-size-navigation-tablet);
+    --font-size-article-body: var(--font-size-body-large-tablet);
+    --font-size-article-sub-headline: var(--font-size-body-headline-small-tablet);
+    --font-size-article-headline: var(--font-size-body-headline-large-tablet);
+    --font-size-article-title: var(--font-size-title-xx-large-tablet);
+
+    --brand-font-size: var(--font-size-title-large-desktop);
+
+    --grid-columns: var(--layout-columns-tablet);
+    --grid-gutter: var(--layout-gutter-tablet);
+    --grid-margin: var(--layout-margin-tablet);
+    --grid-indent-wide: var(--spacing-large-gutter-plus-column-tablet);
+
+    --space-line-break: var(--spacing-line-break-body-tablet);
+    --space-1: var(--spacing-1-tablet);
+    --space-2: var(--spacing-2-tablet);
+    --space-3: var(--spacing-3-tablet);
+    --space-5: var(--spacing-5-tablet);
+    --space-6: var(--spacing-6-tablet);
+    --space-7: var(--spacing-7-tablet);
+    --space-8: var(--spacing-8-tablet);
+    --space-9: var(--spacing-9-tablet);
+    --space-10: var(--spacing-10-tablet);
+    --space-11: var(--spacing-11-tablet);
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --font-size-x-small: var(--font-size-x-small-desktop);
+    --font-size-small: var(--font-size-small-desktop);
+    --font-size-body: var(--font-size-body-default-desktop);
+    --font-size-heading: var(--font-size-title-large-desktop);
+    --font-size-display: var(--font-size-title-x-large-desktop);
+    --font-size-button: var(--font-size-button-desktop);
+    --font-size-navigation: var(--font-size-navigation-desktop);
+    --font-size-article-body: var(--font-size-body-large-desktop);
+    --font-size-article-sub-headline: var(--font-size-body-headline-small-desktop);
+    --font-size-article-headline: var(--font-size-body-headline-large-desktop);
+    --font-size-article-title: var(--font-size-title-xx-large-desktop);
+
+    --grid-columns: var(--layout-columns-desktop);
+    --grid-gutter: var(--layout-gutter-desktop);
+    --grid-margin: var(--layout-margin-desktop);
+    --grid-indent-wide: var(--spacing-large-gutter-plus-column-desktop);
+
+    --radius-medium: var(--style-corner-medium-desktop);
+
+    --space-line-break: var(--spacing-line-break-body-desktop);
+    --space-1: var(--spacing-1-desktop);
+    --space-2: var(--spacing-2-desktop);
+    --space-3: var(--spacing-3-desktop);
+    --space-5: var(--spacing-5-desktop);
+    --space-6: var(--spacing-6-desktop);
+    --space-7: var(--spacing-7-desktop);
+    --space-8: var(--spacing-8-desktop);
+    --space-9: var(--spacing-9-desktop);
+    --space-10: var(--spacing-10-desktop);
+    --space-11: var(--spacing-11-desktop);
+
+    --btn-height: var(--spacing-button-height-desktop);
+    --btn-min-width: var(--spacing-button-min-width-desktop);
+  }
+}
+
+@media (min-width: 1360px) {
+  :root {
+    --grid-gutter: var(--layout-gutter-desktop-large);
+    --grid-margin: var(--layout-margin-desktop-large);
+  }
+}

@@ -1,0 +1,115 @@
+/*
+ * Buttons. All four variants share one geometry and differ only in surface, so
+ * `[M]`, `Find [F]`, `Close [esc]` and the CTAs stay the same physical size.
+ * Labels are always mono — the serif never appears inside a control.
+ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--btn-gap);
+  height: var(--btn-height);
+  padding: 0 var(--btn-padding-lg);
+  margin: 0;
+  border: 0;
+  border-radius: var(--radius-medium);
+  background: transparent;
+  color: var(--color-text-default);
+  font-family: var(--font-family-semi-mono);
+  letter-spacing: var(--type-mono-button-letter-spacing);
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+  /* `clip` not `hidden`: these are inline-flex and `hidden` would create a
+     scroll container that shifts the label's baseline by a fraction. */
+  overflow: clip;
+  box-sizing: border-box;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--color-focus-outline);
+  outline-offset: 2px;
+}
+
+.btn svg {
+  display: block;
+  flex-shrink: 0;
+}
+
+.btn--medium,
+.btn--high,
+.btn--low {
+  font-size: var(--type-mono-button-size);
+  line-height: 1.25;
+}
+
+.btn--icon-only {
+  min-width: var(--btn-min-width);
+  padding: 0 var(--btn-padding-sm);
+}
+
+/* Medium is the default chrome pill: translucent grey over blurred content. */
+.btn--medium {
+  background: var(--btn-surface-medium);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.btn--medium:not([aria-disabled='true']):hover,
+.btn--medium:not([aria-disabled='true']):focus-visible {
+  background: var(--btn-surface-medium-hover);
+}
+
+.btn--medium:not([aria-disabled='true']):active {
+  background: var(--btn-surface-medium-active);
+}
+
+.btn--high {
+  background: var(--btn-surface-high);
+  color: var(--btn-text-high);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.btn--high:not([aria-disabled='true']):hover,
+.btn--high:not([aria-disabled='true']):focus-visible {
+  background: var(--btn-surface-high-hover);
+}
+
+.btn--high:not([aria-disabled='true']):active {
+  color: var(--btn-text-high-active);
+}
+
+.btn--low {
+  border: var(--stroke-medium) solid var(--btn-stroke-low);
+}
+
+.btn--low:not([aria-disabled='true']):hover,
+.btn--low:not([aria-disabled='true']):focus-visible {
+  border-color: var(--btn-stroke-low-hover);
+}
+
+.btn--low:not([aria-disabled='true']):active {
+  background: var(--btn-surface-medium-active);
+}
+
+/* Strips all the chrome back to a plain underlined link that still answers to
+   button semantics — used for in-prose actions. */
+.btn--minimal {
+  height: auto;
+  padding: 0;
+  border-radius: 0;
+  text-decoration: underline;
+  background: none;
+}
+
+.btn--minimal:not([aria-disabled='true']):hover,
+.btn--minimal:not([aria-disabled='true']):focus-visible {
+  opacity: 0.7;
+}
+
+.btn--minimal:not([aria-disabled='true']):active {
+  opacity: 0.5;
+}

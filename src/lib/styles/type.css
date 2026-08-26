@@ -1,0 +1,201 @@
+/*
+ * Typography utilities. Every class is font-weight 400 on purpose: the system
+ * never sets bold anywhere, and separates hierarchy by size and tracking only.
+ * Display sizes carry -0.03em because the serif's fitting is loose at 38px+.
+ */
+
+h1,
+.type-display {
+  font-family: var(--font-family-serif);
+  font-size: var(--type-heading-x-large-size);
+  line-height: var(--type-heading-x-large-line-height);
+  letter-spacing: -0.03em;
+  font-weight: 400;
+}
+
+h2,
+h3,
+.type-heading {
+  font-family: var(--font-family-serif);
+  font-size: var(--type-heading-size);
+  line-height: var(--type-heading-line-height);
+  letter-spacing: -0.03em;
+  font-weight: 400;
+}
+
+/* h3 sits close enough to body size that negative tracking starts to hurt it. */
+h3,
+.type-heading {
+  letter-spacing: 0;
+}
+
+p,
+li,
+.type-body {
+  font-family: var(--font-family-serif);
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-line-height);
+}
+
+small,
+.type-small {
+  font-family: var(--font-family-serif);
+  font-size: var(--type-small-size);
+  line-height: var(--type-small-line-height);
+}
+
+code,
+pre,
+kbd,
+samp,
+.type-code {
+  font-family: var(--font-family-mono);
+  font-size: var(--type-code-size);
+  line-height: var(--type-code-line-height);
+}
+
+/* ------------------------------------------------------------------ serif set */
+.type-serif-headline-x-large {
+  font-family: var(--font-family-serif);
+  font-size: var(--type-heading-x-large-size);
+  line-height: var(--type-heading-x-large-line-height);
+  letter-spacing: -0.03em;
+  font-weight: 400;
+}
+
+.type-serif-headline-large {
+  font-family: var(--font-family-serif);
+  font-size: var(--type-heading-size);
+  line-height: var(--type-heading-line-height);
+  letter-spacing: -0.03em;
+  font-weight: 400;
+}
+
+.type-serif-headline-default {
+  font-family: var(--font-family-serif);
+  font-size: var(--type-heading-default-size);
+  line-height: var(--type-heading-default-line-height);
+  font-weight: 400;
+}
+
+.type-serif-body {
+  font-family: var(--font-family-serif);
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-line-height);
+  font-weight: 400;
+}
+
+.type-serif-navigation {
+  font-family: var(--font-family-serif);
+  font-size: var(--type-serif-navigation-size);
+  line-height: var(--type-serif-navigation-line-height);
+  font-weight: 400;
+}
+
+.type-serif-navigation-indent {
+  font-family: var(--font-family-serif);
+  font-size: var(--type-serif-navigation-size);
+  line-height: var(--type-serif-navigation-line-height);
+  font-weight: 400;
+  text-indent: var(--type-serif-indent-medium);
+}
+
+.type-serif-body-indent-medium {
+  font-family: var(--font-family-serif);
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-line-height);
+  font-weight: 400;
+  text-indent: var(--type-serif-indent-medium);
+}
+
+/* ------------------------------------------------------------- article sizes */
+.type-article-body {
+  font-family: var(--font-family-serif);
+  font-size: var(--font-size-article-body);
+  line-height: var(--line-height-body);
+  font-weight: 400;
+}
+
+.type-article-sub-headline {
+  font-family: var(--font-family-serif);
+  font-size: var(--font-size-article-sub-headline);
+  line-height: var(--line-height-tight);
+  letter-spacing: -0.03em;
+  font-weight: 400;
+}
+
+.type-article-headline {
+  font-family: var(--font-family-serif);
+  font-size: var(--font-size-article-headline);
+  line-height: var(--line-height-tight);
+  letter-spacing: -0.03em;
+  font-weight: 400;
+}
+
+.type-article-title {
+  font-family: var(--font-family-serif);
+  font-size: var(--font-size-article-title);
+  line-height: var(--line-height-tight);
+  letter-spacing: -0.03em;
+  font-weight: 400;
+}
+
+/* --------------------------------------------------------------- mono set */
+/* `lnum`/`tnum` keep dates and figures from shifting as digits change — the
+   mono rail is full of them (07.08.2026, [1]…[5], counts). */
+.type-semi-mono-default {
+  font-family: var(--font-family-semi-mono);
+  font-size: var(--type-semi-mono-default-size);
+  line-height: var(--type-semi-mono-default-line-height);
+  letter-spacing: var(--type-semi-mono-default-letter-spacing);
+  font-weight: 400;
+}
+
+.type-semi-mono-x-small {
+  font-family: var(--font-family-semi-mono);
+  font-size: var(--type-semi-mono-x-small-size);
+  line-height: var(--type-semi-mono-x-small-line-height);
+  letter-spacing: var(--type-semi-mono-x-small-letter-spacing);
+  font-weight: 400;
+}
+
+.type-semi-mono-small {
+  font-family: var(--font-family-semi-mono);
+  font-size: var(--type-semi-mono-small-size);
+  line-height: var(--type-semi-mono-small-line-height);
+  letter-spacing: var(--type-semi-mono-small-letter-spacing);
+  font-feature-settings: 'lnum', 'tnum';
+  font-weight: 400;
+}
+
+.type-mono-default {
+  font-family: var(--font-family-mono);
+  font-size: var(--type-mono-default-size);
+  line-height: var(--type-mono-default-line-height);
+  letter-spacing: var(--type-mono-default-letter-spacing);
+  font-weight: 400;
+}
+
+.type-mono-navigation {
+  font-family: var(--font-family-mono);
+  font-size: var(--type-mono-navigation-size);
+  line-height: var(--type-mono-navigation-line-height);
+  letter-spacing: var(--type-mono-navigation-letter-spacing);
+  font-weight: 400;
+}
+
+.type-mono-details {
+  font-family: var(--font-family-mono);
+  font-size: var(--type-mono-details-size);
+  line-height: var(--type-mono-details-line-height);
+  letter-spacing: var(--type-mono-details-letter-spacing);
+  font-weight: 400;
+}
+
+.type-mono-button {
+  font-family: var(--font-family-mono);
+  font-size: var(--type-mono-button-size);
+  line-height: var(--type-mono-button-line-height);
+  letter-spacing: var(--type-mono-button-letter-spacing);
+  font-weight: 400;
+}

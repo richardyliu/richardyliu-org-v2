@@ -1,0 +1,365 @@
+@import './fonts.css';
+@import './tokens.css';
+@import './type.css';
+@import './layout.css';
+@import './buttons.css';
+
+/* --------------------------------------------------------------------- reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  /* Anchor jumps land below the fixed header rather than under it. */
+  scroll-padding-top: var(--header-height);
+}
+
+body {
+  margin: 0;
+  background: var(--color-surface-default);
+  color: var(--color-text-default);
+  font-family: var(--font-family-serif);
+  font-size: var(--type-body-size);
+  line-height: var(--type-body-line-height);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* The menu overlay and Find both freeze the page behind them. */
+body.is-locked {
+  overflow: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* One underline treatment for the whole site: 1px, offset so descenders in the
+   serif clear it. Applied on hover rather than at rest, which is why body copy
+   reads as unbroken prose until you point at it. */
+a.link,
+.link {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+a.underline-hover:hover,
+a.underline-hover:focus-visible {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-focus-outline);
+  outline-offset: 2px;
+}
+
+/* -------------------------------------------------------------- scrollbars */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-scrollbar-thumb) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--color-scrollbar-thumb);
+  border-radius: 4px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--color-scrollbar-thumb-hover);
+}
+
+/* ------------------------------------------------------------------- prose */
+/* Applied to rendered markdown. Paragraph spacing is a line-break token, not a
+   multiple of the font size, so prose and the mono rail share a vertical grid. */
+.prose > * + * {
+  margin-top: var(--space-line-break);
+}
+
+.prose a {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+.prose a:hover {
+  color: var(--color-link-default);
+}
+
+.prose ol {
+  list-style: none;
+  counter-reset: prose-ol;
+}
+
+/* Counters are rendered as bracketed mono markers to match the site's other
+   enumerations ([1] in the sidebar, [1]…[5] on the landing page). */
+.prose ol > li {
+  counter-increment: prose-ol;
+  position: relative;
+  padding-left: var(--nav-marker-width);
+}
+
+.prose ol > li::before {
+  content: '[' counter(prose-ol) ']';
+  position: absolute;
+  left: 0;
+  top: 0.15em;
+  font-family: var(--font-family-mono);
+  font-size: var(--type-mono-default-size);
+  letter-spacing: var(--type-mono-default-letter-spacing);
+  font-feature-settings: 'lnum', 'tnum';
+  color: var(--color-text-default);
+}
+
+.prose ol > li + li,
+.prose ul > li + li {
+  margin-top: var(--space-line-break);
+}
+
+.prose ul > li {
+  position: relative;
+  padding-left: var(--nav-marker-width);
+}
+
+.prose ul > li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  font-family: var(--font-family-mono);
+  font-size: var(--type-mono-default-size);
+}
+
+.prose hr {
+  border: 0;
+  border-top: 1px solid var(--color-divider);
+  margin-block: var(--space-5);
+}
+
+.prose blockquote {
+  padding-left: var(--space-3);
+  border-left: 1px solid var(--color-divider);
+  color: var(--color-text-muted);
+}
+
+/* `.prose > * + *` only reaches the top level, so a blockquote holding more than
+   one block — an intro line and then a list, which is most of them in a long
+   piece — would otherwise close up. */
+.prose blockquote > * + * {
+  margin-top: var(--space-line-break);
+}
+
+.prose strong {
+  font-weight: 400;
+  font-style: italic;
+}
+
+/* Headings inside rendered markdown. Long-form pieces carry three levels; the
+   two serif sizes were already in the token set (`article-headline`,
+   `article-sub-headline`) and had no consumer until now. The fourth level drops
+   into the mono face rather than a fourth serif size — the same move the rest
+   of the site makes, where anything acting as a label is mono and anything
+   acting as prose is serif. */
+.prose h2,
+.prose h3 {
+  font-family: var(--font-family-serif);
+  line-height: var(--line-height-tight);
+  letter-spacing: -0.03em;
+  font-weight: 400;
+  text-wrap: balance;
+}
+
+.prose h2 {
+  font-size: var(--font-size-article-headline);
+}
+
+.prose h3 {
+  font-size: var(--font-size-article-sub-headline);
+}
+
+.prose h4 {
+  font-family: var(--font-family-mono);
+  font-size: var(--type-mono-default-size);
+  line-height: var(--type-mono-default-line-height);
+  letter-spacing: var(--type-mono-default-letter-spacing);
+  font-weight: 400;
+  text-transform: uppercase;
+  color: var(--color-text-default);
+}
+
+/* Headings need more air above than the flow gives them, and less below, so a
+   heading reads as attached to what follows rather than floating between two
+   blocks. `* + *` above already set a top margin; these override it. */
+.prose > h2 {
+  margin-top: var(--space-7);
+}
+
+.prose > h3 {
+  margin-top: var(--space-6);
+}
+
+.prose > h4 {
+  margin-top: var(--space-5);
+}
+
+/* An `hr` immediately before a heading is the section break the markdown
+   already draws; the heading's own top margin would double it. */
+.prose hr + h2 {
+  margin-top: var(--space-5);
+}
+
+/* Tables are data, so they take the mono face and hairline rules rather than a
+   fill. `display: block` is what makes the horizontal scroll possible without a
+   wrapper element — markdown gives us a bare `<table>` and nothing to wrap it
+   in — and `max-width` keeps it from pushing the prose column wider than the
+   grid allows. */
+.prose table {
+  display: block;
+  width: max-content;
+  max-width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+  font-family: var(--font-family-mono);
+  font-size: var(--type-mono-default-size);
+  line-height: 1.4;
+  letter-spacing: 0;
+  font-feature-settings: 'lnum', 'tnum';
+}
+
+.prose th,
+.prose td {
+  text-align: left;
+  vertical-align: top;
+  font-weight: 400;
+  padding: var(--space-2) var(--space-3) var(--space-2) 0;
+  border-bottom: 1px solid var(--color-divider);
+}
+
+.prose thead th {
+  color: var(--color-text-muted);
+  border-bottom-color: var(--color-border-default);
+}
+
+.prose tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+/* Figures sit at the width of the prose column. The caption carries the credit
+   line, which for a licensed photograph is not decoration — it is the licence
+   term. */
+.prose figure {
+  margin: 0;
+}
+
+.prose img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.prose figcaption {
+  margin-top: var(--space-2);
+  font-family: var(--font-family-mono);
+  font-size: var(--type-semi-mono-small-size);
+  line-height: var(--type-semi-mono-small-line-height);
+  color: var(--color-text-muted);
+}
+
+/* --------------------------------------------------------- scroll reveal */
+/* The hidden state ships in markup; the `reveal` action only ever flips it to
+   'shown'. Both the no-JS and reduced-motion paths land on the final state, so
+   content is never left stranded behind an effect that cannot run. */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.6s var(--ease-emphasized), transform 0.6s var(--ease-emphasized);
+  /* Failsafe. `html:not(.js)` covers scripting being *off*, but not scripting
+     that loaded and then broke — a chunk that 404s, a bundle that throws before
+     hydration. In that case nothing would ever set the attribute and the page
+     would sit there permanently blank. This forces every element visible after
+     2.5s no matter what, so a JS failure costs an animation, not the content. */
+  animation: reveal-failsafe 1ms linear 2.5s forwards;
+}
+
+@keyframes reveal-failsafe {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+[data-reveal='shown'] {
+  /* Hand control back to the transition; otherwise the failsafe would still
+     fire at 2.5s and re-run the move on an element already in place. */
+  animation: none;
+  opacity: 1;
+  transform: none;
+}
+
+/* No scripting means nothing will ever flip the attribute, so the hidden state
+   must not apply at all. `html.js` is set by the inline script in app.html. */
+html:not(.js) [data-reveal] {
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

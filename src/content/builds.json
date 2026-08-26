@@ -1,0 +1,82 @@
+[
+  {
+    "slug": "go-kart",
+    "title": "DIY Go Kart",
+    "caption": "Low budget go kart built with full suspension and 10km duration.",
+    "image": "/building/go-kart.jpg",
+    "alt": "Side view of a tubular-frame go kart with a black seat, steering column and four road wheels",
+    "url": "https://wiki.firstrobotics.com.cn/"
+  },
+  {
+    "slug": "multimodal-robot",
+    "title": "Multimodal Robot Interaction and Kinematics Application",
+    "caption": "A rover robot that interacts with user's voice command via an arm.",
+    "image": "/building/multimodal-robot.jpg",
+    "alt": "Six-wheeled rover with a rocker-bogie chassis and a jointed gripper arm on a bench",
+    "url": ""
+  },
+  {
+    "slug": "handheld-navigation",
+    "title": "Handheld Navigation Device",
+    "caption": "A compass-style haptic device to navigate the visually impaired.",
+    "image": "/building/handheld-navigation.jpg",
+    "alt": "Green disc-shaped haptic device on a stand, in front of laptops showing the project's slides",
+    "url": "https://www.linkedin.com/feed/update/urn:li:activity:7355982974560935936/"
+  },
+  {
+    "slug": "frc-2025",
+    "title": "FRC Robotics '25",
+    "caption": "3-DoF mechanical arm, 180° pivoting prop intake, and F-style climbing hook.",
+    "image": "/building/frc-2025.jpg",
+    "alt": "Competition robot with a telescoping arm, on pavement outside a glass building",
+    "url": "https://www.thebluealliance.com/team/6353/2024"
+  },
+  {
+    "slug": "frc-2024",
+    "title": "FRC Robotics '24",
+    "caption": "Coaxial ground prop intake and rack-and-pinion angle-adjustable shooter.",
+    "image": "/building/frc-2024.jpg",
+    "alt": "Competition robot with an angled shooter assembly raised above the chassis",
+    "url": "https://www.thebluealliance.com/team/6353/2024"
+  },
+  {
+    "slug": "frc-2023",
+    "title": "FRC Robotics '23",
+    "caption": "1-stage elevator and pneumatic intake.",
+    "image": "/building/frc-2023.jpg",
+    "alt": "Competition robot with a chain-driven elevator and green intake wheels",
+    "url": "https://www.thebluealliance.com/team/6353/2023"
+  },
+  {
+    "slug": "high-school-101",
+    "title": "High School 101",
+    "caption": "Cheat sheet for skipping high school and ragebaiting teachers.",
+    "image": "/building/high-school-101.png",
+    "alt": "Screenshot of the EFZ International Programme 101 handbook site",
+    "url": "https://github.com/EFZ-GKB/EFZ-GKB-101"
+  },
+  {
+    "slug": "frc-wiki",
+    "title": "FRC Wikipedia",
+    "caption": "Technical wiki for the Chinese FRC community.",
+    "image": "/building/frc-wiki.jpg",
+    "alt": "Screenshot of the FRC Chinese Wiki homepage",
+    "url": "https://wiki.firstrobotics.com.cn/"
+  },
+  {
+    "slug": "frc-match-display",
+    "title": "FRC Match Display",
+    "caption": "Locally deployed web app for displaying match data during games.",
+    "image": "/building/frc-match-display.jpg",
+    "alt": "Screenshot of a match results board for the FRC Shanghai Regional",
+    "url": "https://frc-match-display.vercel.app/"
+  },
+  {
+    "slug": "inventory-robot",
+    "title": "Industrial Robot for Inventory Management",
+    "caption": "",
+    "image": "/building/inventory-robot.png",
+    "alt": "Warehouse inventory robot with a vertical mast and four extending shelves",
+    "url": ""
+  }
+]

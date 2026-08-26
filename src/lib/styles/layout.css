@@ -1,0 +1,151 @@
+/*
+ * Layout primitives. Two shapes only:
+ *   .layout-container — max-width + symmetric margin, no grid
+ *   .layout-grid      — the same box, plus the responsive column grid
+ * Children position themselves with .layout-col-* helpers rather than each
+ * module inventing its own grid, so every module lines up on the same columns.
+ */
+
+.layout-container {
+  max-width: var(--grid-max-width);
+  width: 100%;
+  box-sizing: border-box;
+  margin-inline: auto;
+  padding-inline: var(--grid-margin);
+}
+
+.layout-grid {
+  max-width: var(--grid-max-width);
+  width: 100%;
+  box-sizing: border-box;
+  margin-inline: auto;
+  padding-inline: var(--grid-margin);
+  display: grid;
+  grid-template-columns: var(--grid-template-columns);
+  column-gap: var(--grid-gutter);
+}
+
+.layout-grid__full {
+  grid-column: 1 / -1;
+}
+
+/* Absolutely positioned twin of .layout-grid, for captions laid over media. */
+.layout-overlay-grid {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  padding-inline: var(--grid-margin);
+  display: grid;
+  grid-template-columns: var(--grid-template-columns);
+  column-gap: var(--grid-gutter);
+}
+
+.layout-inset-inline {
+  left: var(--grid-margin);
+  right: var(--grid-margin);
+}
+
+.layout-self-start {
+  align-self: start;
+}
+.layout-self-center {
+  align-self: center;
+}
+.layout-self-end {
+  align-self: end;
+}
+
+/* Module rhythm: siblings inside a page get one big gap, except consecutive
+   prose blocks, which get a smaller one so a run of text reads as one section. */
+.layout-page-modules,
+.module-group,
+.anchor-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.layout-page-modules > *:not(:last-child),
+.module-group > *:not(:last-child),
+.anchor-section > *:not(:last-child) {
+  margin-bottom: var(--space-9);
+}
+
+.layout-page-modules > .rich-text-module:not(:last-child),
+.module-group > .rich-text-module:not(:last-child),
+.anchor-section > .rich-text-module:not(:last-child) {
+  margin-bottom: var(--space-6);
+}
+
+.layout-page-modules {
+  margin-bottom: var(--space-9);
+}
+
+/* Column helpers. Generated for all 12 even though mobile only has 6 — the
+   *-tablet / *-desktop variants below are what actually get used at width. */
+.layout-col-span-1 { grid-column-end: span 1; }
+.layout-col-span-2 { grid-column-end: span 2; }
+.layout-col-span-3 { grid-column-end: span 3; }
+.layout-col-span-4 { grid-column-end: span 4; }
+.layout-col-span-5 { grid-column-end: span 5; }
+.layout-col-span-6 { grid-column-end: span 6; }
+.layout-col-span-7 { grid-column-end: span 7; }
+.layout-col-span-8 { grid-column-end: span 8; }
+.layout-col-span-9 { grid-column-end: span 9; }
+.layout-col-span-10 { grid-column-end: span 10; }
+.layout-col-span-11 { grid-column-end: span 11; }
+.layout-col-span-12 { grid-column-end: span 12; }
+
+.layout-col-start-1 { grid-column-start: 1; }
+.layout-col-start-2 { grid-column-start: 2; }
+.layout-col-start-3 { grid-column-start: 3; }
+.layout-col-start-4 { grid-column-start: 4; }
+.layout-col-start-5 { grid-column-start: 5; }
+.layout-col-start-6 { grid-column-start: 6; }
+.layout-col-start-7 { grid-column-start: 7; }
+.layout-col-start-8 { grid-column-start: 8; }
+.layout-col-start-9 { grid-column-start: 9; }
+.layout-col-start-10 { grid-column-start: 10; }
+.layout-col-start-11 { grid-column-start: 11; }
+.layout-col-start-12 { grid-column-start: 12; }
+
+@media (min-width: 600px) {
+  .layout-col-span-2-tablet { grid-column-end: span 2; }
+  .layout-col-span-3-tablet { grid-column-end: span 3; }
+  .layout-col-span-4-tablet { grid-column-end: span 4; }
+  .layout-col-span-5-tablet { grid-column-end: span 5; }
+  .layout-col-span-6-tablet { grid-column-end: span 6; }
+  .layout-col-span-8-tablet { grid-column-end: span 8; }
+  .layout-col-start-3-tablet { grid-column-start: 3; }
+  .layout-col-start-5-tablet { grid-column-start: 5; }
+  .layout-col-start-6-tablet { grid-column-start: 6; }
+}
+
+@media (min-width: 1024px) {
+  .layout-col-span-2-desktop { grid-column-end: span 2; }
+  .layout-col-span-3-desktop { grid-column-end: span 3; }
+  .layout-col-span-4-desktop { grid-column-end: span 4; }
+  .layout-col-span-5-desktop { grid-column-end: span 5; }
+  .layout-col-span-6-desktop { grid-column-end: span 6; }
+  .layout-col-span-7-desktop { grid-column-end: span 7; }
+  .layout-col-span-8-desktop { grid-column-end: span 8; }
+  .layout-col-span-9-desktop { grid-column-end: span 9; }
+  .layout-col-span-12-desktop { grid-column-end: span 12; }
+  .layout-col-start-1-desktop { grid-column-start: 1; }
+  .layout-col-start-5-desktop { grid-column-start: 5; }
+  .layout-col-start-9-desktop { grid-column-start: 9; }
+  .layout-col-start-10-desktop { grid-column-start: 10; }
+}
+
+/* Screen-reader-only. The landing page leans on this: its real h1 and intro
+   paragraph are here, because visually the page is only a generative canvas. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
