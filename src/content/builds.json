@@ -48,14 +48,6 @@
     "url": "https://www.thebluealliance.com/team/6353/2023"
   },
   {
-    "slug": "high-school-101",
-    "title": "High School 101",
-    "caption": "Cheat sheet for skipping high school and ragebaiting teachers.",
-    "image": "/building/high-school-101.png",
-    "alt": "Screenshot of the EFZ International Programme 101 handbook site",
-    "url": "https://github.com/EFZ-GKB/EFZ-GKB-101"
-  },
-  {
     "slug": "frc-wiki",
     "title": "FRC Wikipedia",
     "caption": "Technical wiki for the Chinese FRC community.",
