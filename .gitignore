@@ -3,3 +3,5 @@ node_modules
 /build
 .DS_Store
 static/find-index.json
+CLAUDE.md
+.claude/
