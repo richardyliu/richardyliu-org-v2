@@ -296,6 +296,28 @@ a.underline-hover:focus-visible {
   border-bottom: 0;
 }
 
+/* Display equations. The site has no math renderer and does not need one for
+   this: the equations are simple enough to set in Unicode, and the mono face is
+   already what everything numeric on the site is set in. */
+.prose .equation {
+  font-family: var(--font-family-mono);
+  font-size: var(--type-mono-default-size);
+  line-height: 1.5;
+  letter-spacing: 0;
+  font-feature-settings: 'lnum', 'tnum';
+  padding-left: var(--space-3);
+  border-left: 1px solid var(--color-divider);
+}
+
+/* A caption line directly under an equation, naming the reaction it describes. */
+.prose .equation + .equation-label {
+  margin-top: var(--space-1);
+  padding-left: var(--space-3);
+  font-family: var(--font-family-mono);
+  font-size: var(--type-semi-mono-small-size);
+  color: var(--color-text-muted);
+}
+
 /* Figures sit at the width of the prose column. The caption carries the credit
    line, which for a licensed photograph is not decoration — it is the licence
    term. */
