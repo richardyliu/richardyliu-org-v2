@@ -1,7 +1,7 @@
 ---
 title: 'Robotics'
 description: 'A first-principles deep-dive from SLAM to robot foundation models — and why general-purpose humanoids remain years away, gated not by hardware, planning, or capital, but by the reliability of dexterous manipulation.'
-date: 'August 25, 2026'
+date: 'June 12, 2026'
 tags: 'robotics, humanoids, foundation models'
 readingTime: 48
 cover: '/writing/robotics-shadow-hand.jpg'

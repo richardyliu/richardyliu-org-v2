@@ -1,7 +1,7 @@
 ---
 title: 'Energy and Human Abundance'
 description: 'A deep dive on energy and humanity, focused on how energy has defined our past and how it will determine our future.'
-date: 'August 26, 2026'
+date: 'August 3, 2026'
 tags: 'energy, thermodynamics, abundance'
 readingTime: 139
 cover: '/writing/energy-whitbread-engine.jpg'

@@ -3,16 +3,25 @@
   import Card from '$lib/components/Card.svelte';
   import { monoDate } from '$lib/content.js';
 
-  /** @type {{ data: { essays: import('$lib/content.js').Essay[] } }} */
+  /**
+   * @type {{ data: {
+   *   essays: import('$lib/content.js').Essay[],
+   *   featured: import('$lib/content.js').Essay[]
+   * } }}
+   */
   let { data } = $props();
 
   /**
-   * Featured is the newest essay at four columns; everything else drops to a
-   * two-up grid below. With a single essay the "All" section still renders, and
-   * that repetition is intentional — the sections are the site's structure, not
-   * a function of how much has been published.
+   * Which essays are featured is decided in +page.js — the newest plus anything
+   * inside the recency window. This file only lays them out: feature cards at
+   * roughly five columns, two to a row, and everything else in the two-up grid
+   * below.
+   *
+   * Featured essays appear in "All Writing" as well, and that repetition is
+   * intentional — the sections are the site's structure, not a function of how
+   * much has been published.
    */
-  let featured = $derived(data.essays[0]);
+  let featured = $derived(data.featured);
   let rest = $derived(data.essays);
 
   const SECTIONS = [
@@ -23,18 +32,23 @@
 
 <ContentPage sections={SECTIONS}>
   <section class="layout-grid" id="featured">
-    {#if featured}
-      <div class="feature">
-        <Card
-          href={`/writing/${featured.slug}`}
-          title={featured.title}
-          meta={monoDate(featured.date)}
-          sub={featured.description}
-          src={featured.cover}
-          alt={featured.coverAlt}
-          ratio="16 / 10"
-        />
-      </div>
+    {#if featured.length}
+      <ul class="feature-grid">
+        {#each featured as essay, i (essay.slug)}
+          <li>
+            <Card
+              href={`/writing/${essay.slug}`}
+              title={essay.title}
+              meta={monoDate(essay.date)}
+              sub={essay.description}
+              src={essay.cover}
+              alt={essay.coverAlt}
+              ratio="16 / 10"
+              delay={i * 60}
+            />
+          </li>
+        {/each}
+      </ul>
     {:else}
       <p class="empty type-serif-body">Nothing published yet.</p>
     {/if}
@@ -61,8 +75,15 @@
 </ContentPage>
 
 <style>
-  .feature {
+  /* One feature card per row until there is room for two. The desktop track is
+     eleven columns rather than twelve so each card lands near the five columns
+     a single feature used to occupy, and a lone feature still matches the old
+     layout because it simply takes the first track. */
+  .feature-grid {
     grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6) var(--grid-gutter);
   }
 
   .section-heading {
@@ -84,7 +105,7 @@
   }
 
   @media (min-width: 600px) {
-    .feature {
+    .feature-grid {
       grid-column: 1 / span 5;
     }
 
@@ -95,8 +116,9 @@
   }
 
   @media (min-width: 1024px) {
-    .feature {
-      grid-column: 1 / span 5;
+    .feature-grid {
+      grid-column: 1 / span 11;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .grid-two {

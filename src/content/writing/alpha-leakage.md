@@ -1,7 +1,7 @@
 ---
 title: 'Alpha Leakage'
 description: 'Technology went from 5% of global GDP to over 20%, and venture returns fell over the same span. The industry that underwrote the future failed to capitalize its own skillset.'
-date: 'August 25, 2026'
+date: 'August 18, 2026'
 tags: 'venture capital, asset management, history'
 readingTime: 11
 cover: '/writing/alpha-leakage-pdp8.jpg'

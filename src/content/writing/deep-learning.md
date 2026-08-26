@@ -1,7 +1,7 @@
 ---
 title: 'Deep Learning'
 description: 'The entire history of deep learning read as one story: the series of advancements that raised the ceiling on seven constraints — data, parameters, optimization, architecture, compute, compute efficiency, and energy.'
-date: 'August 25, 2026'
+date: 'July 20, 2026'
 tags: 'deep learning, scaling laws, history'
 readingTime: 37
 cover: '/writing/deep-learning-perceptron.png'
