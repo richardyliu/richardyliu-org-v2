@@ -1,12 +1,10 @@
 /**
  * Content loaders. Everything here runs at prerender time only.
  *
- * Reading and writing are loaded differently on purpose. The shelf is 272
- * entries of which two have bodies, so eagerly importing 272 compiled markdown
- * components would ship the whole shelf as JavaScript for no benefit — the list
- * comes from a JSON index, and only the two note pages import their markdown.
- * Writing is a handful of essays, so eager is fine and gives us frontmatter for
- * the index without a second pass.
+ * The shelf is loaded lazily on purpose: 272 entries of which two have bodies,
+ * so eagerly importing 272 compiled markdown components would ship the whole
+ * shelf as JavaScript for no benefit — the list comes from a JSON index, and
+ * only the two note pages import their markdown.
  */
 
 import shelf from '$content/reading/_index.json';
@@ -18,9 +16,6 @@ import builds from '$content/builds.json';
 /** Markdown bodies for the shelf entries that have notes. Lazy — see above. */
 const readingNotes = import.meta.glob('/src/content/reading/*.md');
 
-/** Essays. Eager: the index needs every frontmatter block anyway. */
-const writingModules = import.meta.glob('/src/content/writing/*.md', { eager: true });
-
 /**
  * The hand-composed pages (/about). Loaded through a glob rather than imported
  * by name for a boring but real reason: SvelteKit writes the `$content` alias
@@ -28,7 +23,7 @@ const writingModules = import.meta.glob('/src/content/writing/*.md', { eager: tr
  * `import About from '$content/pages/about.md'` resolves to a file TypeScript
  * then refuses, `.md` not being an extension it can read. Vite types globs for
  * us, so going through one sidesteps the whole problem — and matches how the
- * shelf and the essays are already loaded.
+ * shelf is already loaded.
  */
 const pageModules = import.meta.glob('/src/content/pages/*.md', { eager: true });
 
@@ -80,41 +75,6 @@ export async function loadReadingNotes(/** @type {string} */ slug) {
     await loader()
   );
   return mod;
-}
-
-/** @typedef {{ slug: string, title: string, description: string, date: string, tags: string[], draft: boolean, sample: boolean, cover: string | null, coverAlt: string, readingTime: number }} Essay */
-
-/** @returns {Essay[]} newest first */
-export function getWriting() {
-  return Object.entries(writingModules)
-    .map(([path, mod]) => {
-      const m = /** @type {{ metadata: Record<string, any> }} */ (mod).metadata ?? {};
-      return {
-        slug: path.split('/').pop()?.replace(/\.md$/, '') ?? '',
-        title: m.title ?? 'Untitled',
-        description: m.description ?? '',
-        date: m.date ?? '',
-        tags: m.tags ?? [],
-        draft: Boolean(m.draft),
-        sample: Boolean(m.sample),
-        cover: m.cover ?? null,
-        coverAlt: m.coverAlt ?? '',
-        readingTime: m.readingTime ?? 0
-      };
-    })
-    .sort((a, b) => toTime(b.date) - toTime(a.date));
-}
-
-/**
- * The compiled component for one essay, or null. Reads straight out of the
- * eager glob above — the module is already in the bundle, so this is a lookup,
- * not a second load.
- */
-export function getEssayModule(/** @type {string} */ slug) {
-  const key = `/src/content/writing/${slug}.md`;
-  return /** @type {{ default: unknown, metadata: Record<string, any> } | undefined} */ (
-    writingModules[key]
-  );
 }
 
 /**

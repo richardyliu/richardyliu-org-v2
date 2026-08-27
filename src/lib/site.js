@@ -39,7 +39,6 @@ export const SOCIAL = {
 export const NAV = [
   { label: 'About', href: '/' },
   { label: 'Building', href: '/building' },
-  { label: 'Writing', href: '/writing' },
   { label: 'Reading', href: '/reading' },
   { label: 'Investing', href: '/investing' }
 ];

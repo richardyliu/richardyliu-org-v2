@@ -70,7 +70,6 @@ const push = (title, path, kind, text = '') =>
 const STATIC_PAGES = [
   { title: 'Richard Liu', path: '/', kind: 'page', text: 'home landing frontier robotics deep tech investing agents' },
   { title: 'Building', path: '/building', kind: 'page', text: 'robots hardware rover competition robotics industrial inventory arm intake shooter elevator' },
-  { title: 'Writing', path: '/writing', kind: 'page', text: 'essays notes index' },
   { title: 'Reading', path: '/reading', kind: 'page', text: 'shelf books read notes' },
   { title: 'Investing', path: '/investing', kind: 'page', text: 'investments portfolio companies' },
   { title: 'Colophon', path: '/colophon', kind: 'page', text: 'typography newsreader geist mono design system credits build' }
@@ -86,24 +85,6 @@ const aboutFile = join(content, 'pages', 'about.md');
 if (existsSync(aboutFile)) {
   const aboutText = toPlain(splitFrontmatter(readFileSync(aboutFile, 'utf8'))[1]);
   if (aboutText) push('About', '/', 'page', aboutText);
-}
-
-// ----------------------------------------------------------------- writing
-const writingDir = join(content, 'writing');
-if (existsSync(writingDir)) {
-  for (const file of readdirSync(writingDir).filter((f) => f.endsWith('.md'))) {
-    const raw = readFileSync(join(writingDir, file), 'utf8');
-    const [fm, body] = splitFrontmatter(raw);
-    const meta = parseFrontmatter(fm);
-    if (meta.draft === 'true') continue;
-    const slug = file.replace(/\.md$/, '');
-    push(
-      meta.title || slug,
-      `/writing/${slug}`,
-      'writing',
-      `${meta.description ?? ''} ${meta.tags ?? ''} ${toPlain(body)}`
-    );
-  }
 }
 
 // ----------------------------------------------------------------- reading

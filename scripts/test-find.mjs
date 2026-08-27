@@ -10,7 +10,7 @@ const check = (name, fn) => {
 const CORPUS = [
   { title: 'About', path: '/about', kind: 'page', text: 'robotics deep tech berkeley' },
   { title: 'Reading', path: '/reading', kind: 'page', text: 'shelf books' },
-  { title: 'The Verification Gap', path: '/writing/the-verification-gap', kind: 'writing', text: 'agents permitting cad robotics' },
+  { title: 'The Verification Gap', path: '/building#verification-gap', kind: 'building', text: 'agents permitting cad robotics' },
   { title: 'Chip War: The Fight for the World’s Most Critical Technology', path: '/reading#chip-war', kind: 'reading', text: 'Chris Miller' },
   { title: 'Barbarians at the Gate', path: '/reading#barbarians', kind: 'reading', text: 'Bryan Burrough' },
   { title: 'Upriver', path: '/investing#upriver', kind: 'investing', text: 'GTM agents Llama Ventures' }
@@ -55,8 +55,8 @@ check('truncation keeps the section for hash paths', () => {
 });
 
 check('truncation keeps the section for slug paths', () => {
-  const t = middleTruncate('/writing/an-extremely-long-essay-slug-that-will-not-fit-in-the-column');
-  assert.equal(t.startsWith('/writing/...'), true, t);
+  const t = middleTruncate('/reading/an-extremely-long-book-slug-that-will-not-fit-in-the-column');
+  assert.equal(t.startsWith('/reading/...'), true, t);
 });
 
 check('short paths are left alone', () => {

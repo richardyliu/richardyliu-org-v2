@@ -36,7 +36,7 @@ export async function loadIndex(/** @type {typeof fetch} */ f = fetch) {
   return inflight;
 }
 
-const KIND_BONUS = { page: 40, writing: 24, investing: 12, reading: 0 };
+const KIND_BONUS = { page: 40, building: 24, investing: 12, reading: 0 };
 
 /**
  * Higher is better. The tiers matter more than the exact numbers:
@@ -80,7 +80,7 @@ export function search(/** @type {Entry[]} */ entries, /** @type {string} */ que
 }
 
 /**
- * `/writing/announcing-the-thing` -> `/writing/...ncing-the-thing`
+ * `/reading/when-we-cease-to-understand-the-world` -> `/reading/...tand-the-world`
  *
  * CSS ellipsis truncates at the end, which would hide the slug — the part that
  * actually identifies the page — and leave the section prefix everyone can

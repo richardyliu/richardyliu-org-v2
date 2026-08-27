@@ -5,3 +5,6 @@ node_modules
 static/find-index.json
 CLAUDE.md
 .claude/
+
+# Off-site content: present on this machine, never committed, never built.
+/stealth
