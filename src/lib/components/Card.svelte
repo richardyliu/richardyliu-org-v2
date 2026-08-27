@@ -9,8 +9,13 @@
    * with and without artwork still lines up, and a page does not reflow as
    * covers load in.
    *
+   * Without an `href` the card renders as a plain block: no link, no hover
+   * response. That is for entries that exist on the shelf but have nothing to
+   * open — pointing them at a placeholder anchor made them advertise a
+   * destination they do not have.
+   *
    * @type {{
-   *   href: string,
+   *   href?: string | null,
    *   title: string,
    *   meta?: string,
    *   sub?: string,
@@ -24,7 +29,7 @@
    * }}
    */
   let {
-    href,
+    href = null,
     title,
     meta = '',
     sub = '',
@@ -38,11 +43,12 @@
   } = $props();
 </script>
 
-<a
+<svelte:element
+  this={href ? 'a' : 'div'}
   class="card"
-  {href}
-  target={external ? '_blank' : undefined}
-  rel={external ? 'noreferrer noopener' : undefined}
+  href={href || undefined}
+  target={href && external ? '_blank' : undefined}
+  rel={href && external ? 'noreferrer noopener' : undefined}
   data-reveal=""
   use:reveal={{ delay }}
 >
@@ -59,7 +65,7 @@
   {#if sub}
     <p class="card__sub {compact ? 'type-serif-small' : 'type-serif-body'}">{sub}</p>
   {/if}
-</a>
+</svelte:element>
 
 <style>
   .card {
@@ -93,8 +99,8 @@
     transition: opacity 0.2s var(--ease-standard);
   }
 
-  .card:hover .card__media::after,
-  .card:focus-visible .card__media::after {
+  a.card:hover .card__media::after,
+  a.card:focus-visible .card__media::after {
     opacity: 0.04;
   }
 
@@ -107,8 +113,8 @@
     margin: var(--space-1) 0 0;
   }
 
-  .card:hover .card__title,
-  .card:focus-visible .card__title {
+  a.card:hover .card__title,
+  a.card:focus-visible .card__title {
     text-decoration: underline;
     text-decoration-thickness: 1px;
     text-underline-offset: 0.18em;

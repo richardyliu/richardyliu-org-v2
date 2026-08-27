@@ -57,7 +57,7 @@
         {#each data.shelf as book (book.slug)}
           <li id={slugOf(book.slug)} class="anchor-row">
             <Card
-              href={book.hasNotes ? book.slug : '#all-reading'}
+              href={book.hasNotes ? book.slug : null}
               title={book.title}
               sub={book.author}
               src={book.coverImage}
