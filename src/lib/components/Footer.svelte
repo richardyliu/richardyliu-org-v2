@@ -1,5 +1,4 @@
 <script>
-  import BrandMark from './BrandMark.svelte';
   import { LEGAL_ROWS, SITE_NAME_FULL } from '$lib/site.js';
 
   const YEAR = 2026;
@@ -7,9 +6,6 @@
 
 <footer class="footer">
   <div class="footer__left">
-    <a href="/" class="footer__brand" aria-label="Richard Liu — home">
-      <BrandMark variant="seal" size={25} />
-    </a>
     <div class="footer__legal type-semi-mono-default">
       <p>{SITE_NAME_FULL}</p>
       <p class="footer__legal-spacer"></p>
@@ -42,25 +38,7 @@
     margin-inline: auto;
   }
 
-  /* On mobile the wrapper dissolves so mark and legal become direct children of
-     the column flow and can be ordered independently. */
-  .footer__left {
-    display: contents;
-  }
-
-  .footer__brand {
-    order: 1;
-    margin: 0;
-    padding: 0 var(--grid-margin);
-    color: inherit;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-  }
-
   .footer__legal {
-    order: 3;
-    margin-top: 57px;
     padding: 0 var(--grid-margin);
     line-height: 1.35;
     letter-spacing: 0;
@@ -105,21 +83,10 @@
     }
 
     .footer__left {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-4);
       grid-column: 1 / span 3;
-      align-self: start;
-    }
-
-    .footer__brand {
-      order: initial;
-      padding: 0;
     }
 
     .footer__legal {
-      order: initial;
-      margin-top: 0;
       padding: 0;
       max-width: 315px;
     }

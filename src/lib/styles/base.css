@@ -26,6 +26,12 @@ body {
   line-height: var(--type-body-line-height);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* A column at least one viewport tall, so `.page-content` can grow and keep
+     the footer at the bottom of short pages. */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
 }
 
 /* The menu overlay and Find both freeze the page behind them. */
