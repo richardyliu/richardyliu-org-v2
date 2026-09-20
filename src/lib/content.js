@@ -8,10 +8,12 @@
  */
 
 import shelf from '$content/reading/_index.json';
+import articles from '$content/articles.json';
 import investments from '$content/investments.json';
 import builds from '$content/builds.json';
 
 /** @typedef {{ title: string, author: string, date: string, coverImage: string, slug: string, hasNotes: boolean }} ShelfEntry */
+/** @typedef {{ title: string, date: string, slug: string }} Article */
 
 /** Markdown bodies for the shelf entries that have notes. Lazy — see above. */
 const readingNotes = import.meta.glob('/src/content/reading/*.md');
@@ -56,6 +58,24 @@ export function getShelf() {
 /** The subset that has a page of its own. */
 export function getShelfWithNotes() {
   return getShelf().filter((b) => b.hasNotes);
+}
+
+/**
+ * The article rail on /reading. Titles only — these are saved pieces, not
+ * books: no cover, no author line, nothing to link out to. Eagerly imported
+ * rather than globbed like the shelf, because the whole file is a hundred-odd
+ * short records and there are no bodies to keep out of the bundle.
+ *
+ * The dates are real — read off the archive's own file listing, which is also
+ * why the list stops where it does rather than at today. They are kept on the
+ * records and sorted on, but the rail does not print them.
+ *
+ * @returns {Article[]} newest first
+ */
+export function getArticles() {
+  return /** @type {Article[]} */ (articles)
+    .slice()
+    .sort((a, b) => toTime(b.date) - toTime(a.date) || a.title.localeCompare(b.title));
 }
 
 export function getShelfEntry(/** @type {string} */ slug) {
