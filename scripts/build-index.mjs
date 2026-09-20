@@ -70,7 +70,7 @@ const push = (title, path, kind, text = '') =>
 const STATIC_PAGES = [
   { title: 'Richard Liu', path: '/', kind: 'page', text: 'home landing frontier robotics deep tech investing agents' },
   { title: 'Building', path: '/building', kind: 'page', text: 'robots hardware rover competition robotics industrial inventory arm intake shooter elevator' },
-  { title: 'Reading', path: '/reading', kind: 'page', text: 'shelf books read notes' },
+  { title: 'Reading', path: '/reading', kind: 'page', text: 'shelf books read notes articles essays' },
   { title: 'Investing', path: '/investing', kind: 'page', text: 'investments portfolio companies' },
   { title: 'Colophon', path: '/colophon', kind: 'page', text: 'typography newsreader geist mono design system credits build' }
 ];
@@ -97,6 +97,18 @@ if (existsSync(shelfPath)) {
     // of their own, so the rest deep-link to their row on the index.
     const path = b.hasNotes ? `/reading/${slug}` : `/reading#${slug}`;
     push(b.title, path, 'reading', `${b.author} ${b.date}`);
+  }
+}
+
+// ---------------------------------------------------------------- articles
+// Title and nothing else. The date is deliberately left out of the body text:
+// the rail does not print it, so a query that matched on it would return a row
+// with no visible reason for being there. Every article deep-links to its row
+// on /reading, the way a book without notes does — none of them has a page.
+const articlesPath = join(content, 'articles.json');
+if (existsSync(articlesPath)) {
+  for (const a of JSON.parse(readFileSync(articlesPath, 'utf8'))) {
+    push(a.title, `/reading#${a.slug}`, 'article');
   }
 }
 

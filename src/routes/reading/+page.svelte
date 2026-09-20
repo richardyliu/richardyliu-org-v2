@@ -4,7 +4,10 @@
   import ListGridToggle from '$lib/components/ListGridToggle.svelte';
   import { monoDate } from '$lib/content.js';
 
-  /** @type {{ data: { shelf: import('$lib/content.js').ShelfEntry[] } }} */
+  /** @type {{ data: {
+        shelf: import('$lib/content.js').ShelfEntry[],
+        articles: import('$lib/content.js').Article[]
+      } }} */
   let { data } = $props();
 
   let view = $state(/** @type {'list' | 'grid'} */ ('grid'));
@@ -15,7 +18,8 @@
 
   const SECTIONS = [
     { id: 'recent', label: 'Recent' },
-    { id: 'all-reading', label: 'All Reading' }
+    { id: 'all-reading', label: 'All Reading' },
+    { id: 'articles', label: 'Articles' }
   ];
 </script>
 
@@ -87,6 +91,26 @@
         {/each}
       </ul>
     {/if}
+  </section>
+
+  <!-- Articles, not books: no cover, no author, no page of their own, and no
+       date on the row either — what is left is the title, so the section is a
+       single column of text rather than a third variation on the shelf. The
+       records keep their dates and the list is still ordered newest first;
+       the column is simply not drawn. The grid is one short of the shelf
+       list's so a long stack of titles keeps a readable measure. -->
+  <section class="layout-grid" id="articles">
+    <h2 class="section-heading type-serif-body">
+      Articles <span class="section-count type-semi-mono-small">[{data.articles.length}]</span>
+    </h2>
+
+    <ul class="article-list">
+      {#each data.articles as article (article.slug)}
+        <li class="article-row anchor-row" id={article.slug}>
+          <span class="article-row__title type-serif-body">{article.title}</span>
+        </li>
+      {/each}
+    </ul>
   </section>
 </ContentPage>
 
@@ -195,6 +219,33 @@
     .shelf-list,
     .section-bar {
       grid-column: 1 / span 8;
+    }
+  }
+
+  .article-list {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Same hairline rhythm as the shelf list — two rails on one page that scan
+     differently would read as two pages. */
+  .article-row {
+    padding: var(--space-2) 0;
+    border-bottom: 1px solid var(--color-divider);
+  }
+
+  @media (min-width: 600px) {
+    .article-list {
+      grid-column: 1 / span 6;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    /* One column short of the shelf list: these rows are a single run of
+       prose, and the full eight columns overshoot a comfortable measure. */
+    .article-list {
+      grid-column: 1 / span 7;
     }
   }
 </style>
