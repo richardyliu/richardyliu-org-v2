@@ -18,7 +18,8 @@
 <ContentPage sections={SECTIONS}>
   <RichTextModule id="thesis" half>
     <p>
-      I invest in robotics, deep tech, infrastructure, and applications at
+      I invest in robotics, deep tech, infrastructure, and applications at a Silicon
+      Valley-based corporate venture capital firm. I was previously investing at
       <a href="https://www.llamaventures.vc/" target="_blank" rel="noreferrer noopener"
         >Llama Ventures</a
       >.
