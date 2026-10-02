@@ -39,7 +39,7 @@
 2. I'm also researching how to make agents more capable at skilled work (legal, finance, permitting, CAD, etc.) and how to make robotics smarter at spatial perception at [Berkeley Artificial Intelligence Research](https://bair.berkeley.edu/).
 3. Previously, I built industrial robots and Mars rover bots, and I trained financial and VLA models; our robotics team was fortunate to be backed by [Luminous Ventures](https://www.luminousvc.com/), formerly [Lightspeed China Partners](https://lsvp.com/).
 4. I enjoy competitive golf, coding, venture capital, and entrepreneurship, and I have competed in the Informatics, Linguistics, and Artificial Intelligence Olympiads at the state, national, and international levels.
-5. I [read](/reading) extensively in politics, history, economics, philosophy, psychology, (auto)biography, natural science, and engineering.
+5. I [read](/reading) extensively in history, politics, economics, philosophy, (auto)biography, business and investing, technology and engineering, and literature, with a particular focus on China and East Asia.
 
 </RichTextModule>
 
