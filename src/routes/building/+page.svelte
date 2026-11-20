@@ -25,13 +25,12 @@
 <ContentPage sections={SECTIONS}>
   <RichTextModule id="overview" half>
     <p>
-      Machines, and the software and documentation that grew up around them: three
-      seasons of competition robots with
+      Things I've built, mostly machines: three seasons of competition robots with
       <a href="https://www.thebluealliance.com/team/6353" target="_blank" rel="noreferrer noopener"
         >FRC 6353</a
-      >, a go kart, a voice-driven rover, a haptic navigation device, an industrial
-      robot for warehouse inventory, and the wiki, handbook and match-display app the
-      robotics work needed.
+      >, a go kart, a voice-driven rover, a haptic navigation device, and an industrial
+      robot for warehouse inventory. For the robotics work I also made a wiki, a
+      handbook, and a match-display app.
     </p>
   </RichTextModule>
 
