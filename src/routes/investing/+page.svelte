@@ -1,6 +1,5 @@
 <script>
   import ContentPage from '$lib/components/ContentPage.svelte';
-  import RichTextModule from '$lib/components/RichTextModule.svelte';
   import { reveal } from '$lib/actions/reveal.js';
 
   /** @type {{ data: { investments: {name: string, description: string, year: number, via: string, url: string}[] } }} */
@@ -10,22 +9,11 @@
     s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
   const SECTIONS = [
-    { id: 'thesis', label: 'Thesis' },
     { id: 'companies', label: 'Companies' }
   ];
 </script>
 
 <ContentPage sections={SECTIONS}>
-  <RichTextModule id="thesis" half>
-    <p>
-      I invest in robotics, deep tech, infrastructure, and applications at a Silicon
-      Valley-based corporate venture capital firm. I was previously investing at
-      <a href="https://www.llamaventures.vc/" target="_blank" rel="noreferrer noopener"
-        >Llama Ventures</a
-      >.
-    </p>
-  </RichTextModule>
-
   <section class="layout-grid" id="companies">
     <h2 class="section-heading type-serif-body">
       Companies <span class="section-count type-semi-mono-small"

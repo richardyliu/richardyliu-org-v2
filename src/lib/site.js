@@ -7,7 +7,7 @@ export const SITE_NAME = 'Richard Liu';
 /** Shown beside the wordmark in the footer. */
 export const SITE_NAME_FULL = 'Richard Liu 劉永樂';
 export const SITE_DESCRIPTION =
-  'Richard Liu builds and invests at the frontier — robotics, deep tech, infrastructure, and the agents that will do skilled work.';
+  'Richard Liu builds and invests in robotics, deep tech, infrastructure, and AI agents for skilled work.';
 export const SITE_URL = 'https://www.richardyliu.org';
 
 /**

@@ -33,24 +33,24 @@
 
 <RichTextModule id="now" half>
 
-**Things, facts, and my past work:**
+**About me and my past work:**
 
-1. I'm studying computer science and statistics at [UC Berkeley](https://www.berkeley.edu/), and I invest in robotics, deep tech, infrastructure, and applications at a Silicon Valley-based corporate venture capital firm. I was previously investing at [Llama Ventures](https://www.llamaventures.vc/).
-2. I'm also researching how to make agents more capable at skilled work (legal, finance, permitting, CAD, etc.) and how to make robotics smarter at spatial perception at [Berkeley Artificial Intelligence Research](https://bair.berkeley.edu/).
-3. Previously, I built industrial robots and Mars rover bots, and I trained financial and VLA models; our robotics team was fortunate to be backed by [Luminous Ventures](https://www.luminousvc.com/), formerly [Lightspeed China Partners](https://lsvp.com/).
-4. I enjoy competitive golf, coding, venture capital, and entrepreneurship, and I have competed in the Informatics, Linguistics, and Artificial Intelligence Olympiads at the state, national, and international levels.
-5. I [read](/reading) extensively in history, politics, economics, philosophy, (auto)biography, business and investing, technology and engineering, and literature, with a particular focus on China and East Asia.
+1. I study computer science and statistics at [UC Berkeley](https://www.berkeley.edu/). At [Berkeley Artificial Intelligence Research](https://bair.berkeley.edu/), I work on agents that can do skilled work (legal, finance, permitting, CAD), faster on-device compute and inference, and spatial perception for robots.
+2. I help start and invest in robotics, deep tech, infrastructure, and application companies at [Niche Venture Partners](https://www.nichevp.com/), a multimillion-dollar firm that invests in high-slope people. Before that I was an investor at [Llama Ventures](https://www.llamaventures.vc/).
+3. I used to build industrial robots and Mars rover bots, and I trained financial and VLA models. Our robotics team was lucky to be backed by [Luminous Ventures](https://www.luminousvc.com/), formerly [Lightspeed China Partners](https://lsvp.com/).
+4. I play competitive golf and like coding, venture capital, and starting companies. I've competed in the Informatics, Linguistics, and Artificial Intelligence Olympiads at the state, national, and international levels.
+5. I [read](/reading) a lot of history, politics, economics, philosophy, (auto)biography, business and investing, technology and engineering, and literature, especially about China and East Asia.
 
 </RichTextModule>
 
 <RichTextModule id="probing" half>
 
-**I'm probing deeply into:**
+**What I'm digging into:**
 
-1. **Beautiful engineering.** I want to build beautiful things — code, hardware, and firmware — that improve how people live and work.
-2. **Education, cognition, and developmental trajectories.** I want to understand how early exposure to thoughtful conversation and scientific knowledge shapes a person's long-term success — or, put more directly: what patterns recur among world-historical figures?
-3. **Learning from great texts and people.** I enjoy reading history and (auto)biography, and talking with fund managers across venture capital, private equity, and hedge funds about how they see society, economics, humanity, and politics.
-4. **Identifying incredible people and working with them.** Supporting ambitious, capable people who push humanity forward is, to me, the highest form of altruism, aesthetics, and life well spent.
+1. **Robotics and the physical economy.** Between SLAM and today's robot foundation models, robots have mostly solved perception, locomotion, and planning. Reliable dexterous manipulation is still open, and real-world data holds it back more than algorithms do. I'm interested in the layers every robot company needs, like data infrastructure, evaluation, and robot operations. I also think robots should be judged on how reliably they work, which a demo rarely shows.
+2. **Deep learning and AI compute.** I trace modern AI back to what limits it (data, compute, and energy) and to what turns those inputs into capability. Inference is now most of AI's compute, and the bottleneck has moved down the stack to memory, packaging, and interconnect. So I focus on what decides how much useful intelligence a dollar of hardware produces.
+3. **Energy and industrial infrastructure.** Energy is the most basic constraint on economic growth. After two flat decades, electricity demand is rising again, and the grid, transformers, and field crews that connect and maintain it are a bigger bottleneck than generation technology. I'm studying how software and autonomy can rebuild and run that physical infrastructure.
+4. **Finding incredible people and working with them.** Backing ambitious, capable people who push humanity forward is, to me, the highest form of altruism and aesthetics, and the best way to spend a life.
 
 </RichTextModule>
 
